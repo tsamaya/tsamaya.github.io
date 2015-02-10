@@ -5,6 +5,9 @@
   <!--[if lte IE 8]>
      <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
   <![endif]-->
+    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' />
+    <link rel='stylesheet' type='text/css' href='//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.min.css' />
   <style type="text/css">
     body {
       padding: 0;
@@ -15,11 +18,11 @@
     }
 
   </style>
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 </head>
 <body>
   <div id="leaflet-map"></div>
+  <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <script src='//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.min.js'></script>
   <script>
     var poi = new L.LayerGroup();
     L.marker([45.19151, 5.71465]).bindPopup('Gare de Grenoble').addTo(poi);
@@ -45,7 +48,7 @@
       center: [45.19109, 5.72115],
       zoom: 16,
       layers: [grayscale, poi]
-    });
+    });    
 
     var baseLayers = {
       "Grayscale": grayscale,
@@ -58,6 +61,18 @@
     var overlays = {
       "POI": poi
     };
+
+    // Add geolocation control
+    L.control.locate({
+      follow: false,
+      icon: 'fa fa-bullseye',  // class for icon, fa-location-arrow or fa-map-marker
+      iconLoading: 'fa fa-spinner fa-spin',  // class for loading icon
+      showPopup: false,
+      locateOptions: {
+        maxZoom: 14
+      }
+    }).addTo(map);
+
 
     L.control.layers(baseLayers, overlays).addTo(map);
   </script>
