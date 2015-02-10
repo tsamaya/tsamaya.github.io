@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+  <!--[if lte IE 8]>
+     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
+  <![endif]-->
+  <style type="text/css">
+    body {
+      padding: 0;
+      margin: 0;
+    }
+    html, body, #leaflet-map {
+      height: 100%;
+    }
+
+  </style>
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+  <div id="leaflet-map"></div>
+  <script>
+    var poi = new L.LayerGroup();
+    L.marker([45.19151, 5.71465]).bindPopup('Gare de Grenoble').addTo(poi);
+    L.marker([45.19109, 5.72115]).bindPopup('Rendez vous').addTo(poi);
+    L.marker([45.19438, 5.73262]).bindPopup('Parking').addTo(poi);
+
+    var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+      mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+
+    var grayscale = L.tileLayer(mbUrl, {
+        id: 'examples.map-20v6611k',
+        attribution: mbAttr
+      }),
+      streets = L.tileLayer(mbUrl, {
+        id: 'examples.map-i875mjb7',
+        attribution: mbAttr
+      }),
+      imagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+      toner = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png'),
+      space = L.tileLayer('http://{s}.tiles.mapbox.com/v3/eleanor.ipncow29/{z}/{x}/{y}.png');
+
+    var map = L.map('leaflet-map', {
+      center: [45.19109, 5.72115],
+      zoom: 16,
+      layers: [grayscale, poi]
+    });
+
+    var baseLayers = {
+      "Grayscale": grayscale,
+      "Streets": streets,
+      "Stamen Toner": toner,
+      "esri imagery": imagery,
+      "MapBox space": space
+    };
+
+    var overlays = {
+      "POI": poi
+    };
+
+    L.control.layers(baseLayers, overlays).addTo(map);
+  </script>
+</body>
+</html>
