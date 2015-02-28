@@ -2,82 +2,20 @@
 <html>
 <head>
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
-  <!--[if lte IE 8]>
-     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.ie.css" />
-  <![endif]-->
-    <link rel="stylesheet" href="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <link rel='stylesheet' type='text/css' href='//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css' />
-    <link rel='stylesheet' type='text/css' href='//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.min.css' />
+	<meta http-equiv="refresh" content="5; URL=/coming-to-esri-grenoble">
   <style type="text/css">
     body {
       padding: 0;
       margin: 0;
     }
-    html, body, #leaflet-map {
+    html, body {
       height: 100%;
     }
 
   </style>
 </head>
 <body>
-  <div id="leaflet-map"></div>
-  <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <script src='//rawgithub.com/domoritz/leaflet-locatecontrol/gh-pages/dist/L.Control.Locate.min.js'></script>
-  <script>
-    var poi = new L.LayerGroup();
-    L.marker([45.19151, 5.71465]).bindPopup('Gare de Grenoble').addTo(poi);
-    L.marker([45.19109, 5.72115]).bindPopup('Rendez vous').addTo(poi);
-    L.marker([45.19438, 5.73262]).bindPopup('Parking').addTo(poi);
-    L.marker([45.21427, 5.80752]).bindPopup('esri France<br/>50 chemin de l\'étoile Montbonnot-Saint-Martin<br />04 76 01 87 06').addTo(poi);
-
-
-
-    var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-      mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
-
-    var grayscale = L.tileLayer(mbUrl, {
-        id: 'examples.map-20v6611k',
-        attribution: mbAttr
-      }),
-      streets = L.tileLayer(mbUrl, {
-        id: 'examples.map-i875mjb7',
-        attribution: mbAttr
-      }),
-      imagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
-      toner = L.tileLayer('http://{s}.tile.stamen.com/toner/{z}/{x}/{y}.png'),
-      space = L.tileLayer('http://{s}.tiles.mapbox.com/v3/eleanor.ipncow29/{z}/{x}/{y}.png');
-
-    var map = L.map('leaflet-map', {
-      center: [45.19109, 5.72115],
-      zoom: 16,
-      layers: [grayscale, poi]
-    });    
-
-    var baseLayers = {
-      "Grayscale": grayscale,
-      "Streets": streets,
-      "Stamen Toner": toner,
-      "esri imagery": imagery,
-      "MapBox space": space
-    };
-
-    var overlays = {
-      "POI": poi
-    };
-
-    // Add geolocation control
-    L.control.locate({
-      follow: false,
-      icon: 'fa fa-bullseye',  // class for icon, fa-location-arrow or fa-map-marker
-      iconLoading: 'fa fa-spinner fa-spin',  // class for loading icon
-      showPopup: false,
-      locateOptions: {
-        maxZoom: 14
-      }
-    }).addTo(map);
-
-
-    L.control.layers(baseLayers, overlays).addTo(map);
-  </script>
+  <div >This page has now its own <a href="/coming-to-esri-grenoble">repository</a></div>
+  <div >Redirecting with 5seconds...</div>
 </body>
 </html>
